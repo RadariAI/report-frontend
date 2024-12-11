@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radari AI Demo - Report Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Radari AI Demo - Report Analysis</h1>
+
+        <!-- Upload Area -->
+        <div class="upload-area" id="uploadArea">
+            Click to upload a PDF
+        </div>
+        <input type="file" id="fileInput" style="display: none;" accept=".pdf">
+
+        <!-- Loading Screen -->
+        <div id="loadingScreen" style="display: none;">
+            <p id="loadingMessage">(File Name) - Uploaded</p>
+            <p id="progressMessage">Extracting values...</p>
+            <div class="progress-bar-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+        </div>
+        
+        <div class="response-container">
+            <!-- Left Text Box -->
+            <div id="responseMessage" class="response" style="display: none;"></div>
+        
+            <!-- Right Text Box -->
+            <div id="explanationArea" class="response" style="display: none;"></div>
+        </div>
+
+        <!-- Follow-up Question -->
+        <div class="follow-up" id="followUpArea" style="display: none;">
+            <label for="followUpInput">Ask a follow-up question:</label>
+            <input type="text" id="followUpInput" placeholder="Enter your question">
+            <button id="followUpButton" onclick="sendFollowUpQuestion()">Submit</button>
+
+            <!-- Answer Section -->
+            <div id="answerSection" class="response" style="display: none; margin-top: 20px;">
+                <strong>Answer:</strong>
+                <p id="answerText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
