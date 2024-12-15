@@ -17,6 +17,7 @@ h1 {
     color: #007bff;
 }
 
+/* Upload Area Styling */
 .upload-area {
     border: 2px dashed #007bff;
     padding: 20px;
@@ -29,6 +30,12 @@ h1 {
 
 .upload-area:hover {
     background-color: #f1f9ff;
+    border-color: #0056b3;
+}
+
+/* Highlight upload area when dragging */
+.upload-area.drag-over {
+    background-color: #e9f7ff;
     border-color: #0056b3;
 }
 

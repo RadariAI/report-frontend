@@ -11,14 +11,37 @@ let rawBodyReport = "";
 let reportExplanation = "";
 let userConversation = [];
 
-// Open file picker when upload area is clicked
+// Handle click to open file picker
 uploadArea.addEventListener('click', () => fileInput.click());
 
-// Handle file selection
-fileInput.addEventListener('change', () => {
-    const file = fileInput.files[0];
+// Handle file selection through file input
+fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
     if (file) {
-        uploadPDF(file);
+        uploadPDF(file); // Call the upload function
+    }
+});
+
+// Handle drag and drop
+uploadArea.addEventListener('dragover', (event) => {
+    event.preventDefault(); // Prevent default behavior (e.g., file opening)
+    uploadArea.classList.add('drag-over'); // Add highlight class
+});
+
+uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('drag-over'); // Remove highlight class
+});
+
+uploadArea.addEventListener('drop', (event) => {
+    event.preventDefault(); // Prevent default behavior (e.g., file opening)
+    uploadArea.classList.remove('drag-over'); // Remove highlight class
+
+    // Get the dropped files
+    const file = event.dataTransfer.files[0];
+    if (file && file.type === 'application/pdf') {
+        uploadPDF(file); // Call the upload function
+    } else {
+        alert("Please upload a valid PDF file.");
     }
 });
 
@@ -58,13 +81,13 @@ async function uploadPDF(file) {
             progressMessage.textContent = "Extracting values...";
             progressBar.style.width = "30%";
             resolve();
-        }, 5000)); // 10 seconds
+        }, 3000)); // 3 seconds
 
         await new Promise((resolve) => setTimeout(() => {
             progressMessage.textContent = "Analyzing...";
             progressBar.style.width = "70%";
             resolve();
-        }, 10000)); // 10 seconds
+        }, 3000)); // 3 seconds
 
         progressMessage.textContent = "Finalizing...";
         progressBar.style.width = "90%";
