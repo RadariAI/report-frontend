@@ -81,13 +81,13 @@ async function uploadPDF(file) {
             progressMessage.textContent = "Extracting values...";
             progressBar.style.width = "30%";
             resolve();
-        }, 3000)); // 3 seconds
+        }, 1000)); // 1 second
 
         await new Promise((resolve) => setTimeout(() => {
             progressMessage.textContent = "Analyzing...";
             progressBar.style.width = "70%";
             resolve();
-        }, 3000)); // 3 seconds
+        }, 1000)); // 1 second
 
         progressMessage.textContent = "Finalizing...";
         progressBar.style.width = "90%";
